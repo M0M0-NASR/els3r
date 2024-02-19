@@ -1,0 +1,48 @@
+
+/* start Fonts style */
+@font-face {
+    font-family: "Alexandria";
+    src: url('../fonts/Alexandria-VariableFont_wght.ttf');
+}
+/* end Fonts style */
+
+
+/* start main component */
+
+:root
+{
+    --background-color : #2C061F;
+    --second-color:	#374045;
+    --main-color:   #D89216;
+    --text-color:#E1D89F;
+}
+
+body
+{
+    background-color: var(--background-color) !important;
+}
+
+body *
+{
+    font-family: "Alexandria";
+
+}
+
+.main-color *
+{
+    
+    color: var(--main-color) !important;
+}
+
+.text-color *
+{
+    
+    color: var(--text-color) !important;
+}
+
+
+.logo
+{
+    width: 64px;
+}
+/* end main component */

@@ -1,6 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-    welcome to Home Page
-    
+<h1>اخن</h1>    
 @endsection
