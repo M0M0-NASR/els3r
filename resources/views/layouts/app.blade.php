@@ -27,5 +27,7 @@
             @yield('content')
         </main>
     </div>
+
+    <script src="@yield('script')"></script>
 </body>
 </html>
