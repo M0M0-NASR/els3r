@@ -26,8 +26,8 @@
         <main class="container py-3 pe-4" >
             @yield('content')
         </main>
+        @include('inc.footer')
     </div>
-
     <script src="@yield('script')"></script>
 </body>
 </html>
