@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,12 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view("/","product.index");
+// Redirect to product/index
+Route::redirect("/","/product");
 
+// Login and Register Routes
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Product Routes
+Route::group([] , function(){
 
-Auth::routes();
+    Route::resource('/product' , ProductController::class);}
+);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
