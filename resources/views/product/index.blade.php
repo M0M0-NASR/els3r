@@ -13,20 +13,20 @@
             <div class="card-body">
               <div class="d-flex justify-content-start gap-3 text-align-middle">
                 <div class="text-end ms-1">أسم المنتج :</div>
-                <p class=" text-start">ارز</p>
+                <p class=" text-start">{{$product->name}}</p>
               </div>
               
               <div class="d-flex justify-content-start gap-3 text-align-middle">
                 <div class="text-end ms-1">الوصف :</div>
-                <p class=" text-start">أرز فلاحي معباء</p>
+                <p class=" text-start">{{$product->description}}</p>
               </div>
               <div class="d-flex justify-content-start gap-3 text-align-middle">
                 <div class="text-end ms-1">سعر القديم :</div>
-                <p class=" text-start">10 جنيه</p>
+                <p class=" text-start">{{$product->last_price}}</p>
               </div>
               <div class="d-flex justify-content-start gap-3 text-align-middle">
                 <div class="text-end ms-1">سعر جديد :</div>
-                <p class=" text-start">10 جنيه</p>
+                <p class=" text-start">{{$product->last_price}}</p>
               </div>
               <div class="row justify-content-around">
                 <a href="" class="col-5 btn btn-outline-success">عرض</a>
@@ -35,12 +35,11 @@
 
             </div>
             <div class="card-footer">
-              <small class="">اخر تحديث منذ 3 ايام</small>
+              <small class="">اخر تحديث منذ {{$product->updated_at}} ايام</small>
             </div>
+          </div> 
           </div>
-            
           @endforeach
-          
         </div>
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
