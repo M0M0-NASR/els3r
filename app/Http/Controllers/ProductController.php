@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Barryvdh\Debugbar\Facades\Debugbar;
 
 class ProductController extends Controller
 {
@@ -13,8 +15,11 @@ class ProductController extends Controller
     public function index()
     {
         //
-        $products = Product::all();
-        return view("product.index" , compact("products"));
+        $categories = Category::all();
+        $
+        // Debugbar::info("");
+        // dd($categories);
+        return view("product.index" , compact("categories"));
     }
 
     /**
