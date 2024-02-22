@@ -2,10 +2,11 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Category>
  */
 class ProductFactory extends Factory
 {
@@ -22,6 +23,7 @@ class ProductFactory extends Factory
             "description"=>  "الوصف هنا",
             "last_price"=>  fake()->randomFloat(max: 100),
             "current_price"=>  fake()->randomFloat(max:100),
+            "category_id" => Category::inRandomOrder()->first()->id,
         ];
     }
 }
