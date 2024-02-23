@@ -35,7 +35,7 @@
 
             </div>
             <div class="card-footer">
-              <small class="">اخر تحديث منذ {{$product->updated_at}} ايام</small>
+              <small class="" >اخر تحديث منذ {{$product->updated_at}} ايام</small>
             </div>
           </div> 
           </div>
