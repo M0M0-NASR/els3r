@@ -15,10 +15,10 @@ class ProductController extends Controller
     public function index()
     {
         //
-        $categories = Category::all();
-        $
-        // Debugbar::info("");
-        // dd($categories);
+        $categories = Category::with('products')->limit(10)->get()  ;
+        
+        // dd($categories[2]);
+        
         return view("product.index" , compact("categories"));
     }
 

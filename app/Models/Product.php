@@ -15,4 +15,9 @@ class Product extends Model
         "last_price",
         "current_price"
     ];
+    
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
