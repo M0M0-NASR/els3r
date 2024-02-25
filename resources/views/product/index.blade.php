@@ -168,7 +168,7 @@
   <h5 class="py-2">العلافة</h5>
   <div class="swiper mySwiper rounded p-4">
       <div class="swiper-wrapper">
-          @foreach ($categories[02->products as $category )
+          @foreach ($categories[2]->products as $category )
           
           <div class="swiper-slide">
             <div class="card h-100  rounded">
