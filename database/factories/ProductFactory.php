@@ -2,7 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Product;
 use App\Models\Category;
+use App\Models\ProductPrices;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -26,4 +28,15 @@ class ProductFactory extends Factory
             "category_id" => Category::inRandomOrder()->first()->id,
         ];
     }
+
+    public function configure()
+    {
+        return $this->afterCreating(function (Product $product) {
+            ProductPrices::create([
+                "price" => $product->current_price,
+                "product_id" => $product->id,
+            ]);
+        });
+    }
+
 }

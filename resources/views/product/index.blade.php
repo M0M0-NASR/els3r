@@ -173,7 +173,8 @@
           <div class="swiper-slide">
             <div class="card h-100  rounded">
             <img src="{{asset('assets/img/download.jpg')}}" alt="" srcset="">
-            <div class="card-body">
+            <div class="card-bo
+            dy">
               <div class="d-flex justify-content-start gap-3 text-align-middle">
                 <div class="text-end ms-1">أسم المنتج :</div>
                 <p class=" text-start">{{$category->name}}</p>

@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Database\Seeder;
+use App\Models\ProductPrices;
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,6 +23,5 @@ class DatabaseSeeder extends Seeder
 
         // Product Seeding
         Product::factory()->count(10)->create();
-
     }
 }
