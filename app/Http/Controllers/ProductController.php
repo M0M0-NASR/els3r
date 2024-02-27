@@ -45,17 +45,15 @@ class ProductController extends Controller
     public function show(string $id)
     {
         //
-        $chart_options = [
-            'chart_title' => 'اسعار المنتح خلال سنة حالية',
-            'report_type' => 'group_by_date',
-            'model' => 'App\Models\ProductPrices',
-            'group_by_field' => 'updated_at',
-            'group_by_period' => 'day',
-            'chart_type' => 'line',
-        ];
-        $chart1 = new LaravelChart($chart_options);
         
-        return view('home', compact('chart1'));
+        // dd(Product::find($id)->ProductPrices()->pluck('price' , 'updated_at'));
+        $data =  Product::find($id)->ProductPrices()->pluck('price' , 'updated_at');
+        
+        // array_map(function($row){
+        //     var_dump($row);
+        // },$data);
+        
+        return view('product.show' , compact('data'));
 
     }
 

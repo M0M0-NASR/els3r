@@ -5,6 +5,8 @@ import Swiper from 'swiper/swiper-bundle';
 
 import 'swiper/css';
 
+import { Chart } from "chart.js/auto";
+
 
 // Additional Swiper components or styles can be imported if needed
 // import 'swiper/swiper-bundle.min.css';
@@ -13,12 +15,6 @@ import 'swiper/css';
 const mySwiper = new Swiper('.swiper-container', {
     // Swiper configuration options
 });
-
-
-
-
-
-
 
 document.addEventListener('DOMContentLoaded', function () {
     console.log('DOMContentLoaded event fired');

@@ -30,6 +30,9 @@
         </main>
         @include('inc.footer')
     </div>
-    <script src="@yield('script')"></script>
+
+    @yield('scripts')
+
+
 </body>
 </html>

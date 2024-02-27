@@ -2,6 +2,7 @@ import './bootstrap';
 
 
 import Swiper from 'swiper/bundle';
+import Chart from 'chart.js/auto';
 
 
 const swiper = new Swiper(".mySwiper", {
@@ -12,3 +13,6 @@ const swiper = new Swiper(".mySwiper", {
         prevEl: ".swiper-button-prev",
       },
   });
+
+
+  
