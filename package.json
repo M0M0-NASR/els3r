@@ -13,5 +13,8 @@
         "sass": "^1.56.1",
         "swiper": "^11.0.6",
         "vite": "^5.0.0"
+    },
+    "dependencies": {
+        "chart.js": "^4.4.1"
     }
 }

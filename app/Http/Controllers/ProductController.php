@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Barryvdh\Debugbar\Facades\Debugbar;
+use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
 class ProductController extends Controller
 {
@@ -44,6 +45,18 @@ class ProductController extends Controller
     public function show(string $id)
     {
         //
+        $chart_options = [
+            'chart_title' => 'اسعار المنتح خلال سنة حالية',
+            'report_type' => 'group_by_date',
+            'model' => 'App\Models\ProductPrices',
+            'group_by_field' => 'updated_at',
+            'group_by_period' => 'day',
+            'chart_type' => 'line',
+        ];
+        $chart1 = new LaravelChart($chart_options);
+        
+        return view('home', compact('chart1'));
+
     }
 
     /**

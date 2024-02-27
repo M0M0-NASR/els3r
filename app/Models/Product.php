@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\ProductPrices;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
@@ -13,13 +14,19 @@ class Product extends Model
         "name",
         "description",
         "last_price",
-        "current_price"
+        "current_price",
+        "category_id"
     ];
     
     public function category()
     {
-
         return $this->belongsTo(Category::class);
-    
+
     }
+
+    public function productprices()
+    {
+        return $this->hasMany(ProductPrices::class);
+    }
+
 }

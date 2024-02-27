@@ -11,4 +11,7 @@ class ProductPrices extends Model
     protected $fillable = [
         "price",
     ];
+
+
+    
 }
