@@ -40,8 +40,8 @@
                 </span>
               </div>
               <div class="row justify-content-around">
-                <a href="" class="col-5 btn btn-outline-success">عرض</a>
-                <a href="" class="col-5 btn btn-outline-danger">ابلاغ</a>
+                <a href="{{route('product.show' , $category->id)}}" class="col-5 btn btn-outline-success">عرض</a>
+                <a href="{{route('product.show' , $category->id)}}" class="col-5 btn btn-outline-danger">ابلاغ</a>
               </div>
 
             </div>
@@ -93,8 +93,8 @@
                 </span>
               </div>
               <div class="row justify-content-around">
-                <a href="" class="col-5 btn btn-outline-success">عرض</a>
-                <a href="" class="col-5 btn btn-outline-danger">ابلاغ</a>
+                <a href="{{route('product.show' , $category->id)}}" class="col-5 btn btn-outline-success">عرض</a>
+                <a href="{{route('product.show' , $category->id)}}" class="col-5 btn btn-outline-danger">ابلاغ</a>
               </div>
 
             </div>
@@ -147,8 +147,8 @@
                 </span>
               </div>
               <div class="row justify-content-around">
-                <a href="" class="col-5 btn btn-outline-success">عرض</a>
-                <a href="" class="col-5 btn btn-outline-danger">ابلاغ</a>
+                <a href="{{route('product.show' , $category->id)}}" class="col-5 btn btn-outline-success">عرض</a>
+                <a href="{{route('product.show' , $category->id)}}" class="col-5 btn btn-outline-danger">ابلاغ</a>
               </div>
 
             </div>
@@ -202,8 +202,8 @@
                 </span>
               </div>
               <div class="row justify-content-around">
-                <a href="" class="col-5 btn btn-outline-success">عرض</a>
-                <a href="" class="col-5 btn btn-outline-danger">ابلاغ</a>
+                <a href="{{route('product.show' , $category->id)}}" class="col-5 btn btn-outline-success">عرض</a>
+                <a href="{{route('product.show' , $category->id)}}" class="col-5 btn btn-outline-danger">ابلاغ</a>
               </div>
 
             </div>

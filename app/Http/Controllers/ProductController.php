@@ -47,13 +47,10 @@ class ProductController extends Controller
         //
         
         // dd(Product::find($id)->ProductPrices()->pluck('price' , 'updated_at'));
-        $data =  Product::find($id)->ProductPrices()->pluck('price' , 'updated_at');
+        $dataChart =  Product::find($id)->ProductPrices()->pluck('price' , 'updated_at');
+        $product = Product::find($id);
         
-        // array_map(function($row){
-        //     var_dump($row);
-        // },$data);
-        
-        return view('product.show' , compact('data'));
+        return view('product.show' , compact('dataChart' , 'product'));
 
     }
 

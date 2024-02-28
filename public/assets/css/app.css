@@ -84,3 +84,12 @@ body *
 
 
 
+.img-card img
+{
+    height: 220px !important;
+}
+
+.product-info
+{
+    color:var(--text-color)
+}
