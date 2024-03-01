@@ -14,14 +14,13 @@
     {{-- start link list --}}
         <ul class="navbar-nav mb-2 mb-lg-0 gap-3">
           <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="#">الرئيسية</a>
+            <a class="nav-link " aria-current="page" href="{{url('/product')}}">الرئيسية</a>
           </li>  
           <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="#">المنتجات</a>
+            <a class="nav-link " aria-current="page" href="{{route('product.productsPage')}}">المنتجات</a>
           </li>
-          
           <li class="nav-item">
-            <a class="nav-link" href="#">الشكاوي</a>
+            <a class="nav-link" href="{{route('complince.index')}}">الشكاوي</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">مين احنا</a>

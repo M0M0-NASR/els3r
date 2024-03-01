@@ -41,7 +41,7 @@
               </div>
               <div class="row justify-content-around">
                 <a href="{{route('product.show' , $category->id)}}" class="col-5 btn btn-outline-success">عرض</a>
-                <a href="{{route('product.show' , $category->id)}}" class="col-5 btn btn-outline-danger">ابلاغ</a>
+                <a href="{{route('complince.create' , ['product_id' => $category->id])}}" class="col-5 btn btn-outline-danger">ابلاغ</a>
               </div>
 
             </div>
@@ -94,7 +94,7 @@
               </div>
               <div class="row justify-content-around">
                 <a href="{{route('product.show' , $category->id)}}" class="col-5 btn btn-outline-success">عرض</a>
-                <a href="{{route('product.show' , $category->id)}}" class="col-5 btn btn-outline-danger">ابلاغ</a>
+                <a href="{{route('complince.create')}}" class="col-5 btn btn-outline-danger">ابلاغ</a>
               </div>
 
             </div>
@@ -111,6 +111,7 @@
   </div>
 </div>
 <div class="section text-color rounded mb-4">
+
   <h5 class="py-2">منتجات ألبان</h5>
   <div class="swiper mySwiper rounded p-4">
       <div class="swiper-wrapper">
@@ -148,7 +149,7 @@
               </div>
               <div class="row justify-content-around">
                 <a href="{{route('product.show' , $category->id)}}" class="col-5 btn btn-outline-success">عرض</a>
-                <a href="{{route('product.show' , $category->id)}}" class="col-5 btn btn-outline-danger">ابلاغ</a>
+                <a href="{{route('complince.create' , ['product_id' => $category->id])}}" class="col-5 btn btn-outline-danger">ابلاغ</a>
               </div>
 
             </div>
@@ -165,6 +166,7 @@
   </div>
 </div>
 <div class="section text-color rounded mb-4">
+
   <h5 class="py-2">العلافة</h5>
   <div class="swiper mySwiper rounded p-4">
       <div class="swiper-wrapper">
@@ -203,7 +205,7 @@
               </div>
               <div class="row justify-content-around">
                 <a href="{{route('product.show' , $category->id)}}" class="col-5 btn btn-outline-success">عرض</a>
-                <a href="{{route('product.show' , $category->id)}}" class="col-5 btn btn-outline-danger">ابلاغ</a>
+                <a href="{{route('complince.create' , ['product_id' => $category->id])}}" class="col-5 btn btn-outline-danger">ابلاغ</a>
               </div>
 
             </div>

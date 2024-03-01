@@ -10,17 +10,24 @@ use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
 class ProductController extends Controller
 {
+
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
         //
-        $categories = Category::with('products')->limit(10)->get()  ;
-        
+        $categories = Category::with('products')->limit(10)->get();
+
         // dd($categories[2]);
-        
-        return view("product.index" , compact("categories"));
+
+        return view("product.index", compact("categories"));
+    }
+
+    public function productsPage()
+    {
+        return view('product.productsPage');
     }
 
     /**
@@ -45,12 +52,12 @@ class ProductController extends Controller
     public function show(string $id)
     {
         //
-        
+
         // dd(Product::find($id)->ProductPrices()->pluck('price' , 'updated_at'));
-        $dataChart =  Product::find($id)->ProductPrices()->pluck('price' , 'updated_at');
+        $dataChart = Product::find($id)->ProductPrices()->pluck('price', 'updated_at');
         $product = Product::find($id);
-        
-        return view('product.show' , compact('dataChart' , 'product'));
+
+        return view('product.show', compact('dataChart', 'product'));
 
     }
 
@@ -77,4 +84,6 @@ class ProductController extends Controller
     {
         //
     }
+    
+
 }

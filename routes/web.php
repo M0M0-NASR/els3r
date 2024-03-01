@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ComplinceController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 
@@ -15,14 +16,29 @@ use App\Http\Controllers\ProductController;
 */
 
 // Redirect to product/index
-Route::redirect("/","/product");
+Route::redirect("/", "/product");
 
 // Login and Register Routes
 Auth::routes();
 
 // Product Routes
-Route::group([] , function(){
-
-    Route::resource('/product' , ProductController::class);}
+Route::group(
+    [],
+    function () {
+        Route::get('/product/products', [ProductController::class, 'productsPage'])->name('product.productsPage');
+        Route::resource('/product', ProductController::class);
+    }
 );
+
+
+// Complince Routes
+
+Route::group(
+    [],
+    function () {
+        Route::resource('/complince', ComplinceController::class);
+    }
+);
+
+
 

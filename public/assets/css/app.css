@@ -84,6 +84,9 @@ body *
 
 
 
+
+/* start product-info , product page */
+
 .img-card img
 {
     height: 220px !important;
@@ -93,3 +96,18 @@ body *
 {
     color:var(--text-color)
 }
+/* end product-info , product page */
+
+/* start complaince form , complince page */
+form .submit button 
+{
+    color: var(--main-color) !important;
+}
+
+form
+{
+    color: var(--text-color) !important;
+}
+
+
+/* end complaince form , complince page */
