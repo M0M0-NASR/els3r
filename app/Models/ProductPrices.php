@@ -20,6 +20,8 @@ class ProductPrices extends Model
     
     public function getUpdatedAtAttribute($value)
     {
-        return date("Y-m-d", strtotime($value));
+        $diffInHours = $value->diffInHours(time());
+        dd($diffInHours);
+        return date("Y-m-d", strtotime($diffInHours));
     }
 }

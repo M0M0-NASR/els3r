@@ -9,15 +9,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Product extends Model
 {
     use HasFactory;
-    
+
     protected $fillable = [
+        "id",
         "name",
         "description",
         "last_price",
         "current_price",
         "category_id"
     ];
-    
+
     public function category()
     {
         return $this->belongsTo(Category::class);
@@ -28,5 +29,29 @@ class Product extends Model
     {
         return $this->hasMany(ProductPrices::class);
     }
+    public function getUpdatedAtAttribute($value)
+    {
 
+        $now = \Carbon\Carbon::parse(date('Y-m-d H:i:s', time()));
+        $updatedAt = \Carbon\Carbon::parse($value);
+
+        $times = [
+            $updatedAt->diffInMinutes($now),
+            $updatedAt->diffInHours($now),
+            $updatedAt->diffInDays($now),
+            $updatedAt->diffInWeeks($now)
+        ];
+
+        $showTime = null;
+        $datesPeriod = ['دقيقة' , 'ساعة' , 'يوما' , ' شهرا'];
+
+        $i = 0;
+        foreach ($times as $time) {
+            if($time != 0) $showTime = $time . ' ' . $datesPeriod[$i];
+            $i++;
+        }
+
+
+        return $showTime;
+    }
 }

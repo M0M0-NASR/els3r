@@ -18,11 +18,14 @@ class ProductController extends Controller
     public function index()
     {
         //
-        $categories = Category::with('products')->limit(10)->get();
+                $products = Product::
+                get(['id' , 'name' , 'description' , 'last_price', 'current_price', 'updated_at' , 'category_id'])
+                ->groupBy('category_id');
 
-        // dd($categories[2]);
-
-        return view("product.index", compact("categories"));
+                
+        // dd($products);
+// 
+        return view("product.index", compact("products"));
     }
 
     public function productsPage()

@@ -42,11 +42,9 @@ class ComplinceController extends Controller
         //
         $request->validated();
         $data = $request->safe()->merge(['status'=>"يتم النظر"]); 
-        // dd($data);
 
         try
         {
-
             Complince::create($data->toArray());
         }
 
@@ -61,7 +59,6 @@ class ComplinceController extends Controller
         }
         
         request()->session()->flash('alert', 'تم تسجيل الشكاوي بنجاح ,سوف يتم التحقق منها ف اقرب وقت');
-
 
         return redirect()->back();
     }
