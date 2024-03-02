@@ -223,5 +223,5 @@
 @endsection
 
 @section('script')
-    {{asset('assets/js/swiper.mjs')}}
+    {{-- {{asset('assets/js/swiper.mjs')}} --}}
 @endsection

@@ -5,9 +5,10 @@ import Swiper from 'swiper/bundle';
 import Chart from 'chart.js/auto';
 
 
-const swiper = new Swiper(".mySwiper", {
+const sectionSwiper = new Swiper(".section .mySwiper", {
     slidesPerView: 3,
     spaceBetween: 30,
+    
     navigation: {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
@@ -31,5 +32,17 @@ const swiper = new Swiper(".mySwiper", {
     },
   });
 
+
+const productsSwiper = new Swiper(".products .mySwiper", {
+    slidesPerView: 3,
+    grid: {
+      rows: 2,
+    },
+    spaceBetween: 30,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+  });
 
   
