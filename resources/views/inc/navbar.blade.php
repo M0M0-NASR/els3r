@@ -17,7 +17,7 @@
             <a class="nav-link " aria-current="page" href="{{url('/product')}}">الرئيسية</a>
           </li>  
           <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="{{route('product.productsPage')}}">المنتجات</a>
+            <a class="nav-link " aria-current="page" href="{{route('category.index')}}">المنتجات</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{route('complince.index')}}">الشكاوي</a>

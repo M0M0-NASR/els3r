@@ -2,33 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
-use Barryvdh\Debugbar\Facades\Debugbar;
-use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
-class ProductController extends Controller
+class CategoryController extends Controller
 {
-
-
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
         //
-                $products = Product::
-                get(['id' , 'name' , 'description' , 'last_price', 'current_price', 'updated_at' , 'category_id'])
-                ->groupBy('category_id');
+        $categories = Category::withCount('products')->get();
 
-                
-        // dd($products);
-// 
-        return view("product.index", compact("products"));
+        // dd($categories);
+        return view('category.index' , compact('categories'));
     }
-
-
 
     /**
      * Show the form for creating a new resource.
@@ -52,13 +41,6 @@ class ProductController extends Controller
     public function show(string $id)
     {
         //
-
-        // dd(Product::find($id)->ProductPrices()->pluck('price' , 'updated_at'));
-        $dataChart = Product::find($id)->ProductPrices()->pluck('price', 'updated_at');
-        $product = Product::find($id);
-
-        return view('product.show', compact('dataChart', 'product'));
-
     }
 
     /**
@@ -84,6 +66,4 @@ class ProductController extends Controller
     {
         //
     }
-    
-
 }

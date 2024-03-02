@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ComplinceController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
@@ -25,7 +26,6 @@ Auth::routes();
 Route::group(
     [],
     function () {
-        Route::get('/product/products', [ProductController::class, 'productsPage'])->name('product.productsPage');
         Route::resource('/product', ProductController::class);
     }
 );
@@ -37,6 +37,14 @@ Route::group(
     [],
     function () {
         Route::resource('/complince', ComplinceController::class);
+    }
+);
+
+
+Route::group(
+    [],
+    function () {
+        Route::resource('/category', CategoryController::class);
     }
 );
 
