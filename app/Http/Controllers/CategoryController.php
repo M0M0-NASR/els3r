@@ -41,6 +41,11 @@ class CategoryController extends Controller
     public function show(string $id)
     {
         //
+
+        $category = Category::find($id)->products()->get();
+
+        // dd($category);
+        return view('category.show' , compact('category'));
     }
 
     /**
