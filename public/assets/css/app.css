@@ -177,3 +177,17 @@ nav .pagination li *
 /* end category page  */
 
 
+/* start about page  */
+
+.about .img
+{
+    /* width: 300px !important; */
+    /* height:60vh !important;  */
+    /* object-fit: cover; */
+}
+
+.about a 
+{
+    text-decoration: none;
+}
+/* end about page  */

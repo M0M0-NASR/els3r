@@ -23,7 +23,7 @@
             <a class="nav-link" href="{{route('complince.index')}}">الشكاوي</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">مين احنا</a>
+            <a class="nav-link" href="{{route('site.about')}}">مين احنا</a>
           </li>      
         </ul>
     {{-- end link list --}}

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ComplinceController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 
@@ -49,4 +50,5 @@ Route::group(
 );
 
 
+Route::get('/about' , [HomeController::class , 'about'])->name('site.about');
 
