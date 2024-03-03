@@ -168,4 +168,12 @@ form
 .category .card{
     border: black solid .5px !important;
 }
+
+nav .pagination li *
+{
+    background-color: var(--background-color) !important;
+}
+
 /* end category page  */
+
+

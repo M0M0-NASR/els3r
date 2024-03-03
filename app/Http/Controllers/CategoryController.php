@@ -42,7 +42,7 @@ class CategoryController extends Controller
     {
         //
 
-        $category = Category::find($id)->products()->get();
+        $category = Category::find($id)->products()->paginate('15');
 
         // dd($category);
         return view('category.show' , compact('category'));

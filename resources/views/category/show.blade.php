@@ -48,6 +48,34 @@
           </div> 
           </div>
           @endforeach
+
+
+          <nav aria-label="Page navigation example">
+            <ul class="pagination d-flex justify-content-center ">
+              <li class="page-item">
+                <a class="page-link" href="{{$category->previousPageUrl()}}" aria-label="السابق">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+              @php
+                    $current = $category->url($category->currentPage());
+                    $i = 1;                
+              @endphp
+
+              
+              @foreach ($category->links()->elements[0] as $page )
+              
+              <li class="page-item"><a class="page-link @if($current == $page)active @endif"
+                 href=" {{$page}}">{{$i++}}</a></li>
+              @endforeach
+              <li class="page-item">
+                <a class="page-link" href="{{$category->nextPageUrl()}}" aria-label="التالي">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+         
     </div>
 
     
