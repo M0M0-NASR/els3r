@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\ProductPrices;
+use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -29,6 +30,19 @@ class Product extends Model
     {
         return $this->hasMany(ProductPrices::class);
     }
+
+    public function getSlugOptions()
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('name')
+            ->saveSlugsTo('slug');
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     public function getUpdatedAtAttribute($value)
     {
 

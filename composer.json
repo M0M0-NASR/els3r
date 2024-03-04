@@ -12,7 +12,8 @@
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "laravel/ui": "^4.4",
-        "laraveldaily/laravel-charts": "^0.2.3"
+        "laraveldaily/laravel-charts": "^0.2.3",
+        "spatie/laravel-sluggable": "^3.6"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.10",

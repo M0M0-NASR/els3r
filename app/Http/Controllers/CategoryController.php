@@ -38,11 +38,11 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $slug)
     {
         //
 
-        $category = Category::find($id)->products()->paginate('15');
+        $category = Category::where('slug' , $slug)->first()->products()->paginate('15');
 
         // dd($category);
         return view('category.show' , compact('category'));

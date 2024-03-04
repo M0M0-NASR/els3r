@@ -20,6 +20,7 @@ class CategoryFactory extends Factory
         return [
             //
             "name" => $this->faker->name,
+            "slug" => $this->faker->slug,
         ];
     }
     public function categroyData1():Factory
@@ -28,6 +29,7 @@ class CategoryFactory extends Factory
         return $this->state(function (array $attributes) {
             return [
                 'name' => 'بقوليات',
+
                 // Add other custom attributes for the first category
             ];
 
@@ -41,6 +43,7 @@ class CategoryFactory extends Factory
         return $this->state(function (array $attributes) {
             return [
                 'name' => 'علافة',
+
                 // Add other custom attributes for the second category
             ];
         });
