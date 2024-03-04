@@ -49,13 +49,13 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $slug)
     {
         //
 
         // dd(Product::find($id)->ProductPrices()->pluck('price' , 'updated_at'));
-        $dataChart = Product::find($id)->ProductPrices()->pluck('price', 'updated_at');
-        $product = Product::find($id);
+        $dataChart = Product::where('slug' ,$slug)->first()->ProductPrices()->pluck('price', 'updated_at');
+        $product = Product::where('slug' , $slug)->first();
 
         return view('product.show', compact('dataChart', 'product'));
 

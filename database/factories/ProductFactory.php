@@ -26,6 +26,7 @@ class ProductFactory extends Factory
             "last_price"=>  fake()->randomFloat(max: 100),
             "current_price"=>  fake()->randomFloat(max:100),
             "category_id" => Category::inRandomOrder()->first()->id,
+            "slug" => fake()->slug(),
         ];
     }
 
