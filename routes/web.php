@@ -37,10 +37,11 @@ Route::group(
 Route::group(
     [],
     function () {
+        Route::get('/complince/searchWithNumber' , [ComplinceController::class , 'search'])
+        ->name('complince.search');
         Route::resource('/complince', ComplinceController::class);
     }
 );
-
 
 Route::group(
     [],

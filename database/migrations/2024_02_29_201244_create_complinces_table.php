@@ -11,7 +11,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('complinces', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id');
             $table->foreignId('product_id')->constrained('products');
             $table->string('full_name');
             $table->string('ssn', 14);

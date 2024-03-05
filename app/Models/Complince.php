@@ -10,6 +10,7 @@ class Complince extends Model
     use HasFactory;
 
     protected $fillable = [
+        "id",
         "full_name",
         "ssn",
         "product_id",
@@ -17,6 +18,29 @@ class Complince extends Model
         "government",
         "shop_address",
         "content",
-        "status"
+        "status",
+        "number"
     ];
+
+
+    
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
+
+
+    public function getCreatedAtAttribute($value)
+    {
+        return date('Y-m-d' , strtotime($value));
+    }
+
+    public function getStatusAttribute($value)
+    {
+        $status = ['يتم النظر' =>' يتم النظر ف الشكاوي المقدمة'
+        ,'معلقة'=>'لم تراجع بعد' 
+        , 'تم الحل'=>'تم حل الشكاوي']; 
+        return $status[$value];
+        
+    }
 }

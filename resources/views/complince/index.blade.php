@@ -9,22 +9,29 @@
 
 <div class="search">
 
-    <form class="mb-3">
+    <form class="mb-3" action="{{route('complince.search')}}">
         <div>
             <label for="" class="mb-2">تتبع حالة الشكاوي</label>
             <div class="d-flex">
-                <input type="text" class="form-control" placeholder="اكتب رقم الشكاوي">
+                <input name="number" type="text" class="form-control" placeholder="اكتب رقم الشكاوي">
                 <input type="submit" class="btn btn-success" value="ابحث">
-            </div>            
+            </div>
+            @error('number')
+                {{$message}}
+            @enderror                   
         </div>
     </form>
-    <form>
+    
+    <form action="{{route('complince.search')}}">
         <div>
             <label for="" class="mb-2">ابحث عن شكاواك</label>
             <div class="d-flex">
-                <input type="text" class="form-control" placeholder="اكتب الرقم القومي">
+                <input name="ssn" type="text" class="form-control" placeholder="اكتب الرقم القومي">
                 <input type="submit" class="btn btn-success" value="ابحث">
-            </div>            
+            </div>
+            @error('ssn')
+                {{$message}}
+            @enderror            
         </div>
     </form>
 

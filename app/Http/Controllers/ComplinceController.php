@@ -41,23 +41,19 @@ class ComplinceController extends Controller
     {
         //
         $request->validated();
-        $data = $request->safe()->merge(['status'=>"يتم النظر"]); 
+        $data = $request->safe()->merge(['status' => "يتم النظر", 'id' => uuid_create(), 'number' => fake()->randomNumber(9)]);
 
-        try
-        {
+        try {
             Complince::create($data->toArray());
-        }
+        } catch (\Exception $e) {
+            throw $e;
+            if ($e instanceof UniqueConstraintViolationException) {
+                $request->session()->flash('alert', 'لقد قمت  بهذه الشكاوي من قبل');
 
-        catch(\Exception $e)
-        {
-            if($e instanceof UniqueConstraintViolationException)
-            {
-                $request->session()->flash('alert' , 'لقد قمت  بهذه الشكاوي من قبل');
-      
                 return redirect()->back();
             }
         }
-        
+
         request()->session()->flash('alert', 'تم تسجيل الشكاوي بنجاح ,سوف يتم التحقق منها ف اقرب وقت');
 
         return redirect()->back();
@@ -69,6 +65,7 @@ class ComplinceController extends Controller
     public function show(string $id)
     {
         //
+
     }
 
     /**
@@ -94,4 +91,41 @@ class ComplinceController extends Controller
     {
         //
     }
+
+    public function search(Request $request)
+    {
+        $column = null;
+        $value = null;
+        //
+        if ($request->has('number')) {
+            $request->validate([
+                'number' => "required|numeric|exists:complinces,number"
+            ],[
+                "required" => "ادخل رقم الشكاوي هنا",
+                "numeric" => "ادخل رقم الشكاوي بشكل صحيح",
+                "exists" => "لا يوجد شكاوي",
+            ]
+        );
+        $column = 'number';
+        $value = $request->number;
+        }
+        if ($request->has('ssn')) {
+            $request->validate([
+                'ssn' => "required|numeric|digits:14"
+            ], [
+                "ssn.digits" => "ادخل رقم قومي مكون من 14 رقم",
+                "required" => "ادخل الرقم القومي هنا",
+            ]);
+            $column = 'ssn';
+            $value = $request->ssn;
+        }
+
+
+        $complince = Complince::with('product')->where($column, $value)->first();
+
+        dd($complince);
+
+        return view('complince.show', compact('complince'));
+    }
+
 }
