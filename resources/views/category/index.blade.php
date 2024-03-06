@@ -9,7 +9,7 @@
                 
                 @foreach ($categories as $category)
                 <div class="swiper-slide my-2 rounded-2 d-flex flex-column p-1">
-                    <a href="{{ route('category.show' , $category->id)}}">
+                    <a href="{{ route('category.show' , $category->slug)}}">
                         <img class="img-fluid" src="{{asset('assets/img/download.jpg')}}" alt="">
                         <div class="d-flex justify-content-between align-items-center mt-2 mx-2" >
                             <h4 class="text-end ">{{ $category->name}}</h4>

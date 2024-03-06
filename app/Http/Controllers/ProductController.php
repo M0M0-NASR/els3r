@@ -19,7 +19,7 @@ class ProductController extends Controller
     {
         //
                 $products = Product::
-                get(['id' , 'name' , 'description' , 'last_price', 'current_price', 'updated_at' , 'category_id'])
+                get(['id' , 'slug',  'name' , 'description' , 'last_price', 'current_price', 'updated_at' , 'category_id'])
                 ->groupBy('category_id');
 
                 
@@ -56,6 +56,7 @@ class ProductController extends Controller
         // dd(Product::find($id)->ProductPrices()->pluck('price' , 'updated_at'));
         $dataChart = Product::where('slug' ,$slug)->first()->ProductPrices()->pluck('price', 'updated_at');
         $product = Product::where('slug' , $slug)->first();
+
 
         return view('product.show', compact('dataChart', 'product'));
 
