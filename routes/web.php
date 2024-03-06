@@ -28,6 +28,7 @@ Route::group(
     [],
     function () {
         Route::resource('/product', ProductController::class);
+        
     }
 );
 
@@ -52,4 +53,4 @@ Route::group(
 
 
 Route::get('/about' , [HomeController::class , 'about'])->name('site.about');
-
+Route::get('/site/search' , [HomeController::class , 'search'])->name('site.search');

@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="{{asset('assets/css/all.min.css')}}">
 
     <!-- Scripts -->
+    <script src="{{asset('assets/js/jquery-3.7.1.min.js')}}"></script>
+
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>

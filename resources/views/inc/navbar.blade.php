@@ -49,22 +49,31 @@
         <div class="d-flex justify-content-start align-items-center">
           <div>
             <label for="category">الاقسام</label>
-            <input id="category" type="radio" name="filter" class="btn btn-success" >
+            <input class="filter" id="category" type="radio" name="filter" value="category" class="btn btn-success" >
           </div>
           <div class="ms-2">
             <label for="product">منتجات</label>
-            <input id="product" type="radio" name="filter" class=" btn btn-success" >
+            <input class="filter" id="product" type="radio" name="filter" value="product" class=" btn btn-success" >
           </div>
           <button type="button" class="btn-close ms-2" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
       </div>
-      <div class="d-flex gap-2  p-2" role="search" >
-        <input id="myModal" class="form-control" type="search" placeholder="اكتب اسم السلعة مثل:ارز">
+      <div id="search" class="d-flex gap-2  p-2" role="search" >
+        <input name="search" id="myModal" class="form-control" type="search" placeholder="اكتب اسم السلعة مثل:ارز">
       </div>  
       <div class="modal-body">
-        ...
+        <div id="searchResults">
+          
+        </div>
       </div>
       
     </div>
   </div>
 </div>
+
+
+@section('scripts')
+
+<script src="{{asset('assets/js/searchBar.js')}}"></script>
+    
+@endsection
