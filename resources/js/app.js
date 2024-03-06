@@ -46,3 +46,14 @@ const productsSwiper = new Swiper(".products .mySwiper", {
   });
 
   
+
+// for search modal
+const myInput = document.getElementById('searchInput')
+const searchInput = document.getElementById('myModal')
+
+myInput.addEventListener('focus' , (e)=>
+{
+  e.preventDefault();
+});
+
+
