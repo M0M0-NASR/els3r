@@ -30,12 +30,41 @@
 
     {{-- start search bar --}}
 
-        <form class="d-flex gap-2" role="search">
-            <input class="form-control" type="search" placeholder="اكتب اسم السلعة مثل:ارز" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">بحث</button>
-          </form>      
+        <div class="d-flex gap-2" role="search">
+            <input id="searchInput" class="form-control" type="search" placeholder="اكتب اسم السلعة مثل:ارز" aria-label="Search" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button class="btn btn-outline-success" type="" >بحث</button>
+        </div>      
       
         </div>
     {{-- end search bar --}}
     </div>
   </nav>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">ابحث عن منتجات او اقسام</h1>
+        <div class="d-flex justify-content-start align-items-center">
+          <div>
+            <label for="category">الاقسام</label>
+            <input id="category" type="radio" name="filter" class="btn btn-success" >
+          </div>
+          <div class="ms-2">
+            <label for="product">منتجات</label>
+            <input id="product" type="radio" name="filter" class=" btn btn-success" >
+          </div>
+          <button type="button" class="btn-close ms-2" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+      </div>
+      <div class="d-flex gap-2  p-2" role="search" >
+        <input id="myModal" class="form-control" type="search" placeholder="اكتب اسم السلعة مثل:ارز">
+      </div>  
+      <div class="modal-body">
+        ...
+      </div>
+      
+    </div>
+  </div>
+</div>
