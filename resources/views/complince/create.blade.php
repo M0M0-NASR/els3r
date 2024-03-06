@@ -12,7 +12,7 @@
 @endif
 
 
-<form method="POST" action="{{route('complince.store')}}" class="row g-3 ">
+<form method="POST" action="{{route('complince.store')}}" class="row g-3  border rounded p-2">
   @csrf
   @method('post')  
   <input type="hidden" readonly value="id">
