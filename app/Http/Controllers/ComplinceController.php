@@ -44,7 +44,7 @@ class ComplinceController extends Controller
         $data = $request->safe()->merge(['status' => "يتم النظر", 'id' => uuid_create(), 'number' => fake()->randomNumber(9)]);
 
         try {
-            $complinceModel =  Complince::create($data->toArray());
+            $complinceModel = Complince::create($data->toArray());
         } catch (\Exception $e) {
             throw $e;
             if ($e instanceof UniqueConstraintViolationException) {
@@ -57,7 +57,7 @@ class ComplinceController extends Controller
         // dd($test);
         request()->session()->flash('alert', 'تم تسجيل الشكاوي بنجاح ,سوف يتم التحقق منها ف اقرب وقت');
 
-        return redirect()->route('complince.print')->with('complince' , $complinceModel);
+        return redirect()->route('complince.print')->with('complince', $complinceModel);
     }
 
     /**
@@ -101,16 +101,18 @@ class ComplinceController extends Controller
         $value = null;
         //
         if ($request->has('number')) {
-            $request->validate([
-                'number' => "required|numeric|exists:complinces,number"
-            ],[
-                "required" => "ادخل رقم الشكاوي هنا",
-                "numeric" => "ادخل رقم الشكاوي بشكل صحيح",
-                "exists" => "لا يوجد شكاوي",
-            ]
-        );
-        $column = 'number';
-        $value = $request->number;
+            $request->validate(
+                [
+                    'number' => "required|numeric|exists:complinces,number"
+                ],
+                [
+                    "required" => "ادخل رقم الشكاوي هنا",
+                    "numeric" => "ادخل رقم الشكاوي بشكل صحيح",
+                    "exists" => "لا يوجد شكاوي",
+                ]
+            );
+            $column = 'number';
+            $value = $request->number;
         }
 
         if ($request->has('ssn')) {
@@ -126,8 +128,7 @@ class ComplinceController extends Controller
 
         $complince = Complince::with('product')->where($column, $value)->limit(5)->get();
 
-        if(count($complince) == 1)
-        {
+        if (count($complince) == 1) {
             $complince = $complince->first();
             return view('complince.show', compact('complince'));
         }
@@ -137,10 +138,13 @@ class ComplinceController extends Controller
 
     public function print()
     {
+
+
         $complince = request()->session()->get('complince');
 
-        // dd($complince);
-        return view("complince.print" , compact('complince'));
+
+
+        return view("complince.print", compact('complince'));
     }
 
 }
