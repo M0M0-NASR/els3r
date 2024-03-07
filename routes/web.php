@@ -40,6 +40,8 @@ Route::group(
     function () {
         Route::get('/complince/searchWithNumber' , [ComplinceController::class , 'search'])
         ->name('complince.search');
+        Route::get('/complince/print' , [ComplinceController::class , 'print'])
+        ->name('complince.print');
         Route::resource('/complince', ComplinceController::class);
     }
 );
@@ -50,7 +52,6 @@ Route::group(
         Route::resource('/category', CategoryController::class);
     }
 );
-
 
 Route::get('/about' , [HomeController::class , 'about'])->name('site.about');
 Route::get('/site/search' , [HomeController::class , 'search'])->name('site.search');

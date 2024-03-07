@@ -44,7 +44,7 @@ class ComplinceController extends Controller
         $data = $request->safe()->merge(['status' => "يتم النظر", 'id' => uuid_create(), 'number' => fake()->randomNumber(9)]);
 
         try {
-            Complince::create($data->toArray());
+            $complinceModel =  Complince::create($data->toArray());
         } catch (\Exception $e) {
             throw $e;
             if ($e instanceof UniqueConstraintViolationException) {
@@ -54,9 +54,10 @@ class ComplinceController extends Controller
             }
         }
 
+        // dd($test);
         request()->session()->flash('alert', 'تم تسجيل الشكاوي بنجاح ,سوف يتم التحقق منها ف اقرب وقت');
 
-        return redirect()->back();
+        return redirect()->route('complince.print')->with('complince' , $complinceModel);
     }
 
     /**
@@ -126,6 +127,15 @@ class ComplinceController extends Controller
         dd($complince);
 
         return view('complince.show', compact('complince'));
+    }
+
+
+    public function print()
+    {
+        $complince = request()->session()->get('complince');
+
+        // dd($complince);
+        return view("complince.print" , compact('complince'));
     }
 
 }
