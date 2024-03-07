@@ -63,9 +63,11 @@ class ComplinceController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $number)
     {
         //
+        $complince = Complince::with('product')->where('number', $number)->first();
+        return view('complince.show', compact('complince'));
 
     }
 
@@ -110,6 +112,7 @@ class ComplinceController extends Controller
         $column = 'number';
         $value = $request->number;
         }
+
         if ($request->has('ssn')) {
             $request->validate([
                 'ssn' => "required|numeric|digits:14"
@@ -121,14 +124,16 @@ class ComplinceController extends Controller
             $value = $request->ssn;
         }
 
+        $complince = Complince::with('product')->where($column, $value)->limit(5)->get();
 
-        $complince = Complince::with('product')->where($column, $value)->first();
+        if(count($complince) == 1)
+        {
+            $complince = $complince->first();
+            return view('complince.show', compact('complince'));
+        }
 
-        dd($complince);
-
-        return view('complince.show', compact('complince'));
+        return view('complince.index', compact('complince'));
     }
-
 
     public function print()
     {
