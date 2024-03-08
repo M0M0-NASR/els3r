@@ -5,7 +5,13 @@
 @extends('layouts.app')
 
 @section('content')
-<canvas id="myChart" class="border"></canvas>
+
+<div class="div">
+    <h2>الاكثر شكاوي</h2>
+    <canvas id="mostComplinceChart" class="border">
+    </canvas>
+</div>
+
 
 <div class="search">
 
@@ -37,8 +43,7 @@
 
 </div>
 
-@if(isset($complince)))
-
+@if(isset($complince))
 <table class="table table-borderless">
     <thead>
       <tr>
@@ -63,10 +68,9 @@
         <td>
             <a href="{{route('complince.show' , $oneComplince->number)}}" class="btn btn-success">
                 عرض</a>
-        </td>
-        
+        </td>    
     </tr>
-                    @endforeach
+      @endforeach
                     
     </tbody>
   </table>
@@ -74,4 +78,13 @@
 @endif
 
 
+@endsection
+
+
+@section('scripts')
+<script >
+    var chartData = {!! json_encode($dataChart) !!};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script type="module" src="{{asset('assets/js/complinceChart.js')}}"></script>
 @endsection
