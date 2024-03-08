@@ -35,7 +35,6 @@
 
 <div class="col-6">
     <canvas id="myChart"></canvas>
-
 </div>
 
 @endsection
@@ -44,9 +43,7 @@
 
 <script >
     var chartData = {!! json_encode($dataChart) !!};
-
-    console.log(chartData);
 </script>
-{{-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script type="module" src="{{asset('assets/js/charts.js')}}"></script> --}}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script type="module" src="{{asset('assets/js/charts.js')}}"></script>
 @endsection

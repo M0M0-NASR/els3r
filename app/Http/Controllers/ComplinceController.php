@@ -6,7 +6,6 @@ use App\Models\Product;
 use App\Models\Complince;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreComplinceRequest;
-use App\Exceptions\DuplicateComplinceException;
 use Illuminate\Database\UniqueConstraintViolationException;
 
 class ComplinceController extends Controller
@@ -18,8 +17,18 @@ class ComplinceController extends Controller
     {
         //
 
+        $dataChart = Complince::with('product')->select('product_id', \DB::raw('COUNT(*) as count'))
+        ->groupBy('product_id')
+        ->orderByRaw('count')
+        ->limit('3')->get();
 
-        return view('complince.index');
+        ;
+
+        // dd($dataChart);
+dd($dataChart->pluck(['product.name' ,'count'],'product_id'));
+        //       data: [{x: 'Sales', y: 20}, {x: 'Revenue', y: 10}]
+
+        return view('complince.index' , compact('dataChart'));
     }
 
     /**
@@ -138,12 +147,7 @@ class ComplinceController extends Controller
 
     public function print()
     {
-
-
         $complince = request()->session()->get('complince');
-
-
-
         return view("complince.print", compact('complince'));
     }
 
