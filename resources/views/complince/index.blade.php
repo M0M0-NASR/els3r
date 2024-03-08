@@ -6,9 +6,9 @@
 
 @section('content')
 
-<div class="div">
-    <h2>الاكثر شكاوي</h2>
-    <canvas id="mostComplinceChart" class="border">
+<div class="div text-color mb-3">
+    <h2 class="mb-3">الاكثر شكاوي</h2>
+    <canvas id="mostComplinceChart" class="border text-color">
     </canvas>
 </div>
 
@@ -84,6 +84,7 @@
 @section('scripts')
 <script >
     var chartData = {!! json_encode($dataChart) !!};
+    // console.log(chartData[0].product.name);
 </script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script type="module" src="{{asset('assets/js/complinceChart.js')}}"></script>

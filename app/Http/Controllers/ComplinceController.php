@@ -22,10 +22,8 @@ class ComplinceController extends Controller
         ->orderByRaw('count')
         ->limit('3')->get();
 
-        ;
-
         // dd($dataChart);
-dd($dataChart->pluck(['product.name' ,'count'],'product_id'));
+        // dd($dataChart->toArray());
         //       data: [{x: 'Sales', y: 20}, {x: 'Revenue', y: 10}]
 
         return view('complince.index' , compact('dataChart'));
