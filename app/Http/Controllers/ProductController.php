@@ -18,11 +18,11 @@ class ProductController extends Controller
     public function index()
     {
         //
-                $products = Product::
-                get(['id' , 'slug',  'name' , 'description' , 'last_price', 'current_price', 'updated_at' , 'category_id'])
-                ->groupBy('category_id');
+        $products = Product::
+            get(['id', 'slug', 'name', 'description', 'last_price', 'current_price', 'updated_at', 'category_id'])
+            ->groupBy('category_id');
 
-                
+
         // dd($products);
 // 
         return view("product.index", compact("products"));
@@ -52,13 +52,17 @@ class ProductController extends Controller
     public function show(string $slug)
     {
         //
+        $dataChart = Product::where('slug', $slug)->first()->ProductPrices()->pluck('price', 'updated_at');
+        $product = Product::where('slug', $slug)->first();
+        
+        // Assuming you have a model named Compliance for the table
+        $complianceCounts = Product::where('slug', $slug)->first()->
+            complinces()
+            ->groupBy(\DB::raw('DATE(created_at)'))
+            ->select(\DB::raw('DATE(created_at) as date'), \DB::raw('COUNT(*) as count'))
+            ->pluck('count' , 'date');
 
-        // dd(Product::find($id)->ProductPrices()->pluck('price' , 'updated_at'));
-        $dataChart = Product::where('slug' ,$slug)->first()->ProductPrices()->pluck('price', 'updated_at');
-        $product = Product::where('slug' , $slug)->first();
-
-
-        return view('product.show', compact('dataChart', 'product'));
+        return view('product.show', compact('dataChart', 'product' , 'complianceCounts'));
 
     }
 
@@ -85,6 +89,6 @@ class ProductController extends Controller
     {
         //
     }
-    
-   
+
+
 }

@@ -34,32 +34,34 @@
 </div>
 
 <div class="my-3 text-color">
-    <h5>اسعار المنتج خلال العام</h5>
     <div class="row">
         <div class="col-12 col-md-6">
+            <h5>اسعار المنتج خلال العام</h5>
             <canvas id="myChart"></canvas>
+        </div>
+        <div class="col-12 col-md-6">
+            <h5>الشكاوي المقدمة خلال العام</h5>
+            <canvas id="complinceChart"></canvas>
         </div>
         </div>
         
 </div>
 
 <div class="my-3 text-color">
-    <h5>الشكاوي المقدمة خلال العام</h5>
     <div class="row">
-        <div class="col-12 col-md-6">
-            <canvas id="myChart"></canvas>
-        </div>
+       
         </div>        
 </div>
 
 
-
+{{-- @dd(json_encode($complianceCounts) ) --}}
 @endsection
 
 @section('scripts')
 
 <script >
     var chartData = {!! json_encode($dataChart) !!};
+    var complinceData = {!! json_encode($complianceCounts) !!};
 </script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script type="module" src="{{asset('assets/js/charts.js')}}"></script>

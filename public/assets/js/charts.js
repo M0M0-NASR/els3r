@@ -43,16 +43,15 @@ new Chart(ctx, {
 });
 
 
+const complinceChart = document.getElementById('complinceChart');
 
 
-const mostComplinceChart = document.getElementById('mostComplinceChart');
-
-new Chart(mostComplinceChartData, {
-  type: 'bar',
+new Chart(complinceChart, {
+  type: 'line',
   data: {
     datasets: [{
-      label: 'اسعار خلال سنة',
-      data: chartData,
+      label: 'الشكاوي خلال سنة',
+      data: complinceData,
       borderWidth: 1,
       fill: false,
       tension: 0.1

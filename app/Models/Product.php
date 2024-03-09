@@ -30,6 +30,10 @@ class Product extends Model
     {
         return $this->hasMany(ProductPrices::class);
     }
+    public function complinces()
+    {
+        return $this->hasMany(Complince::class);
+    }
 
     public function getSlugOptions()
     {
