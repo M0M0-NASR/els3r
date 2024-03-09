@@ -33,9 +33,26 @@
 
 </div>
 
-<div class="col-6">
-    <canvas id="myChart"></canvas>
+<div class="my-3 text-color">
+    <h5>اسعار المنتج خلال العام</h5>
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <canvas id="myChart"></canvas>
+        </div>
+        </div>
+        
 </div>
+
+<div class="my-3 text-color">
+    <h5>الشكاوي المقدمة خلال العام</h5>
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <canvas id="myChart"></canvas>
+        </div>
+        </div>        
+</div>
+
+
 
 @endsection
 
