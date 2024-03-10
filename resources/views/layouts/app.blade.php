@@ -27,7 +27,10 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
+
     <div id="app">
+        @include('inc.loading') <!-- Include the loading spinner -->
+
         @include('inc.navbar')
         <main class="container py-3 pe-4" >
             @yield('content')
