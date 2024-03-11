@@ -64,6 +64,8 @@
 body
 {
     background-color: var(--background-color) !important;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
 }
 
 body *
@@ -73,10 +75,30 @@ body *
 }
 /* styles.css */
 
-body {
-    margin: 0;
-    font-family: 'Arial', sans-serif;
+
+/* start Navbar component */
+
+.active-link
+{
+    border-bottom: var(--main-color) solid 1px;
+
 }
+
+
+.navbar ul li a
+{
+    transition: border 400ms ease;
+
+    border-bottom: transparent solid 1px;
+
+}
+
+.navbar ul li a:hover
+{
+    border-bottom: var(--main-color) solid 1px;
+}
+
+/* end Navbar component */
 
 
 
@@ -102,9 +124,6 @@ body {
 
 /* start most-popular */
 
-/* .most-popular {
-
-} */
 
 .section .swiper {
     background-color: var(--second-color) !important;
