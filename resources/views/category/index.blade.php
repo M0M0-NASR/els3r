@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+
+@section('products_active')
+active-link
+@endsection
+
+
 @section('content')
     <!-- Swiper -->
     <div class="products rounded mb-4">

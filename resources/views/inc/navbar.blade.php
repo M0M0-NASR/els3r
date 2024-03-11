@@ -13,17 +13,17 @@
         
     {{-- start link list --}}
         <ul class="navbar-nav mb-2 mb-lg-0 gap-3">
-          <li class="nav-item">
+          <li class="nav-item @yield('main_active')">
             <a class="nav-link " aria-current="page" href="{{url('/product')}}">الرئيسية</a>
           </li>  
-          <li class="nav-item">
+          <li class="nav-item @yield('products_active')">
             <a class="nav-link " aria-current="page" href="{{route('category.index')}}">المنتجات</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{route('complince.index')}}">الشكاوي</a>
+          <li class="nav-item @yield('complince_active')">
+            <a class="nav-link " href="{{route('complince.index')}}">الشكاوي</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{route('site.about')}}">مين احنا</a>
+          <li class="nav-item @yield('about_active')">
+            <a class="nav-link " href="{{route('site.about')}}">مين احنا</a>
           </li>      
         </ul>
     {{-- end link list --}}

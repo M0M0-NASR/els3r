@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@section('main_active')
+active-link
+@endsection
+
+
 @section('content')
 
 <div class="section text-color rounded mb-4">
@@ -225,3 +230,5 @@
 @section('script')
     {{-- {{asset('assets/js/swiper.mjs')}} --}}
 @endsection
+
+

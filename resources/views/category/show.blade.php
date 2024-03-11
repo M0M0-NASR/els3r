@@ -2,6 +2,11 @@
 
 @extends('layouts.app')
 
+@section('products_active')
+active-link
+@endsection
+
+
 @section('content')
     <div class="category row text-color">
         @foreach ($category as $product )

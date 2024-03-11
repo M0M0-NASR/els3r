@@ -4,6 +4,12 @@
 
 @extends('layouts.app')
 
+@section('complince_active')
+active-link
+@endsection
+
+
+
 @section('content')
 
 <div class="div text-color mb-3">

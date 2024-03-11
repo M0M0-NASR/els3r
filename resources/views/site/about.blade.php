@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('about_active')
+active-link
+@endsection
 @section('content')
 
     <div class="about row d-flex justify-content-start">

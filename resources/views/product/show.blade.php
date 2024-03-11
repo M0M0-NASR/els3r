@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('products_active')
+active-link
+@endsection
+
 
 @section('content')
 
@@ -53,8 +57,6 @@
         </div>        
 </div>
 
-
-{{-- @dd(json_encode($complianceCounts) ) --}}
 @endsection
 
 @section('scripts')
