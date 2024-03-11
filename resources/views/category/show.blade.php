@@ -42,7 +42,7 @@ active-link
                 </span>
               </div>
               <div class="row justify-content-around">
-                <a href="{{route('product.show' , $product->id)}}" class="col-5 btn btn-outline-success">عرض</a>
+                <a href="{{route('product.show' , $product->slug)}}" class="col-5 btn btn-outline-success">عرض</a>
                 <a href="{{route('complince.create' , ['product_id' => $product->id])}}" class="col-5 btn btn-outline-danger">ابلاغ</a>
               </div>
 
