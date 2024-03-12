@@ -11,6 +11,7 @@ class Category extends Model
     use HasFactory;
     protected $fillable = [
         "name",
+        "img_cover"
     ];
 
     public function products()

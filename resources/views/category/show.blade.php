@@ -13,7 +13,7 @@ active-link
           
           <div class="col-md-6 col-lg-4  rounded mb-4">
             <div class="card h-100  rounded shadow">
-            <img src="{{asset('assets/img/download.jpg')}}" class="rounded" alt="" srcset="">
+            <img src="{{$product->img_cover}}" class="rounded" alt="" srcset="">
             <div class="card-body">
               <div class="d-flex justify-content-start gap-3 text-align-middle">
                 <div class="text-end ms-1">أسم المنتج :</div>
