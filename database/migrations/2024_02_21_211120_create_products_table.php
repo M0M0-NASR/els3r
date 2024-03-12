@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
+            $table->string('img_cover')->nullable();
 
             $table->decimal('current_price',5,2)->default(0.0);
             $table->decimal('last_price',5,2)->default(0.0);
