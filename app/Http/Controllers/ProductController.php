@@ -19,7 +19,7 @@ class ProductController extends Controller
     {
         //
         $products = Product::
-            get(['id', 'slug', 'name', 'description', 'last_price', 'current_price', 'updated_at', 'category_id'])
+            get(['id', 'slug', 'name', 'img_cover' ,  'description', 'last_price', 'current_price', 'updated_at', 'category_id'])
             ->groupBy('category_id');
 
 

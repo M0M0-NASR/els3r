@@ -25,6 +25,7 @@ class ProductFactory extends Factory
             "description"=>  "الوصف هنا",
             "last_price"=>  fake()->randomFloat(max: 100),
             "current_price"=>  fake()->randomFloat(max:100),
+            "img_cover" => fake()->imageUrl(),
             "category_id" => Category::inRandomOrder()->first()->id,
             "slug" => fake()->slug(),
         ];

@@ -14,7 +14,7 @@ const sectionSwiper = new Swiper(".section .mySwiper", {
         prevEl: ".swiper-button-prev",
       },
       breakpoints: {
-        345: {
+        400: {
             slidesPerView: 1,
         },
         // when window width is <= 576px

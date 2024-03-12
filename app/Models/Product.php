@@ -15,6 +15,7 @@ class Product extends Model
         "id",
         "name",
         "description",
+        "img_cover",
         "last_price",
         "current_price",
         "category_id"

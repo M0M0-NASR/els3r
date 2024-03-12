@@ -50,7 +50,6 @@ class HomeController extends Controller
             }
             else
             {
-
                 $posts = $table->where('name', 'LIKE', '%' . $request->search . "%")
                     ->limit(5)->get();
             }
