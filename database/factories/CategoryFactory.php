@@ -21,6 +21,7 @@ class CategoryFactory extends Factory
             //
             "name" => $this->faker->name,
             "slug" => $this->faker->slug,
+            "img_cover" => fake()->imageUrl()
         ];
     }
     public function categroyData1():Factory
@@ -29,6 +30,8 @@ class CategoryFactory extends Factory
         return $this->state(function (array $attributes) {
             return [
                 'name' => 'بقوليات',
+            "img_cover" => fake()->imageUrl()
+
 
                 // Add other custom attributes for the first category
             ];
@@ -43,6 +46,7 @@ class CategoryFactory extends Factory
         return $this->state(function (array $attributes) {
             return [
                 'name' => 'علافة',
+                "img_cover" => fake()->imageUrl()
 
                 // Add other custom attributes for the second category
             ];
@@ -55,6 +59,8 @@ class CategoryFactory extends Factory
     {
         return $this->state(function (array $attributes) {
             return [
+
+                "img_cover" => fake()->imageUrl(),
                 'name' => 'عطارة',
             ];
         });
