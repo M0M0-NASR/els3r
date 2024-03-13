@@ -3,4 +3,8 @@
         {{-- @include('main-header') --}}
         @include('dashboard.main-header')
         @include('dashboard.content')
+        @include('dashboard.main-sidebar')
+        @include('dashboard.main-footer')
+        @include('dashboard.control-sidebar')
+        @include('dashboard.scripts')
 </body>
