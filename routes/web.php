@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ComplinceController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 
@@ -54,4 +55,7 @@ Route::group(
 );
 
 Route::get('/about' , [HomeController::class , 'about'])->name('site.about');
+
 Route::get('/site/search' , [HomeController::class , 'search'])->name('site.search');
+
+Route::resource('/user', UserController::class);
