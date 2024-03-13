@@ -29,7 +29,7 @@ Route::group(
     [],
     function () {
         Route::resource('/product', ProductController::class);
-        
+
     }
 );
 
@@ -39,10 +39,10 @@ Route::group(
 Route::group(
     [],
     function () {
-        Route::get('/complince/searchWithNumber' , [ComplinceController::class , 'search'])
-        ->name('complince.search');
-        Route::get('/complince/print' , [ComplinceController::class , 'print'])
-        ->name('complince.print');
+        Route::get('/complince/searchWithNumber', [ComplinceController::class, 'search'])
+            ->name('complince.search');
+        Route::get('/complince/print', [ComplinceController::class, 'print'])
+            ->name('complince.print');
         Route::resource('/complince', ComplinceController::class);
     }
 );
@@ -54,8 +54,10 @@ Route::group(
     }
 );
 
-Route::get('/about' , [HomeController::class , 'about'])->name('site.about');
+Route::get('/about', [HomeController::class, 'about'])->name('site.about');
 
-Route::get('/site/search' , [HomeController::class , 'search'])->name('site.search');
+Route::get('/site/search', [HomeController::class, 'search'])->name('site.search');
 
-Route::resource('/user', UserController::class);
+// admin routes
+Route::resource('/admin', UserController::class);
+
