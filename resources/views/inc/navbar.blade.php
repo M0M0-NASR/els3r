@@ -22,18 +22,33 @@
           <li class="nav-item @yield('complince_active')">
             <a class="nav-link " href="{{route('complince.index')}}">الشكاوي</a>
           </li>
+          @guest
+            
           <li class="nav-item @yield('about_active')">
             <a class="nav-link " href="{{route('site.about')}}">مين احنا</a>
           </li>      
+          @endguest
+          @auth
+          <li class="nav-item @yield('about_active')">
+            <form action="{{route('logout')}}" method="POST">
+              @csrf
+              <button class="nav-link">خروج</button>
+            </form>
+          </li>      
+            
+          @endauth
         </ul>
     {{-- end link list --}}
 
     {{-- start search bar --}}
 
+        @guest
+          
         <div class="d-flex gap-2" role="search">
             <input id="searchInput" class="form-control" type="search" placeholder="اكتب اسم السلعة مثل:ارز" aria-label="Search" data-bs-toggle="modal" data-bs-target="#exampleModal">
             <button class="btn btn-outline-success" type="" >بحث</button>
         </div>      
+        @endguest
       
         </div>
     {{-- end search bar --}}
