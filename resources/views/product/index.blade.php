@@ -6,7 +6,8 @@ active-link
 
 
 @section('content')
-
+@guest
+  
 <div class="section text-color rounded mb-4">
     <h5 class="py-2 ">الأكثر شيوعا</h5>
     <div class="swiper mySwiper rounded p-4">
@@ -224,6 +225,38 @@ active-link
       <div class="swiper-button-prev"></div>
   </div>
 </div>
+@endguest
+
+
+@auth
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">المنتج</th>
+      <th scope="col">القسم</th>
+      <th scope="col"> السعر الحالي</th>
+      <th scope="col">السعر القديم</th>
+      <th scope="col">اخر تحديث</th>
+      <th scope="col">الشكاوي</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody class="table-group-divider">
+    <tr>
+      <th scope="row"></th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>@mdo</td>
+      <td>@mdo</td>
+      <td>@mdo</td>
+      <td>@mdo</td>
+    </tr>
+  </tbody>
+</table>
+@endauth
+
 
 @endsection
 
