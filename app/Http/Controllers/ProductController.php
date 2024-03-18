@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Barryvdh\Debugbar\Facades\Debugbar;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
@@ -17,6 +18,12 @@ class ProductController extends Controller
      */
     public function index()
     {
+        if(Auth::authenticate())
+        {
+            $products = Product::
+            get(['id', 'slug', 'name', 'img_cover' ,  'description', 'last_price', 'current_price', 'updated_at', 'category_id' ]);
+            return view("product.index", compact("products"));
+        }
         //
         $products = Product::
             get(['id', 'slug', 'name', 'img_cover' ,  'description', 'last_price', 'current_price', 'updated_at', 'category_id'])
@@ -52,6 +59,7 @@ class ProductController extends Controller
     public function show(string $slug)
     {
         //
+        
         $dataChart = Product::where('slug', $slug)->first()->ProductPrices()->pluck('price', 'updated_at');
         $product = Product::where('slug', $slug)->first();
         
