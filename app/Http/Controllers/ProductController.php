@@ -43,6 +43,8 @@ class ProductController extends Controller
     public function create()
     {
         //
+        $categories = Category::all('name' , 'id');
+        return view('product.create' ,compact( 'categories'));
     }
 
     /**
@@ -51,6 +53,8 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //
+
+        // dd($request-)
     }
 
     /**
