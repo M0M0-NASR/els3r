@@ -10,7 +10,8 @@ class ProductPrices extends Model
     use HasFactory;
     protected $fillable = [
         "price",
-        "updated_at"
+        "updated_at",
+        "product_id"
     ];
 
     public function product()

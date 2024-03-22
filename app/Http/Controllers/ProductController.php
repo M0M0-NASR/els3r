@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreProductRequest;
+use Exception;
 use App\Models\Product;
 use App\Models\Category;
-use Exception;
 use Illuminate\Http\Request;
+use App\Models\ProductPrices;
 use Illuminate\Support\Facades\Auth;
 use Barryvdh\Debugbar\Facades\Debugbar;
+use App\Http\Requests\StoreProductRequest;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
 class ProductController extends Controller
@@ -64,12 +65,17 @@ class ProductController extends Controller
         
         try
         {
-            Product::create($data);
+            $product = Product::create($data);
+            ProductPrices::create([
+                "price" => $product->current_price,
+                "product_id" => $product->id,
+            ]);
             request()->session()->flash('alert', 'تم الاضافة بنجاح');
 
         }
-        catch( Exception $e)
-        {
+        catch( \Throwable $e)
+        {   
+            // throw $e;
             request()->session()->flash('alert', ' خطاء اثناء الاضافة حاول مرة اخري');
 
         }
