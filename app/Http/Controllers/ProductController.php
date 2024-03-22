@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreProductRequest;
 use App\Models\Product;
 use App\Models\Category;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Barryvdh\Debugbar\Facades\Debugbar;
@@ -61,7 +62,27 @@ class ProductController extends Controller
             $data['img_cover'] = $request->file('img_cover')->store('products');
         }
         
-        Product::create($data);
+        try
+        {
+            Product::create($data);
+            request()->session()->flash('alert', 'تم الاضافة بنجاح');
+
+        }
+        catch( Exception $e)
+        {
+            request()->session()->flash('alert', ' خطاء اثناء الاضافة حاول مرة اخري');
+
+        }
+        finally
+        {
+
+            return redirect()->route('product.create');
+     
+        }
+        
+        
+
+
     }
 
     /**
