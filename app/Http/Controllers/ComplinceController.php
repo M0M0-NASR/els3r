@@ -56,7 +56,6 @@ class ComplinceController extends Controller
             throw $e;
             if ($e instanceof UniqueConstraintViolationException) {
                 $request->session()->flash('alert', 'لقد قمت  بهذه الشكاوي من قبل');
-
                 return redirect()->back();
             }
         }

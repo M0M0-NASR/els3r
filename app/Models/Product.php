@@ -3,13 +3,15 @@
 namespace App\Models;
 
 use App\Models\ProductPrices;
+use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
-    use HasFactory;
+    use HasFactory , HasSlug;
+
 
     protected $fillable = [
         "id",
@@ -18,7 +20,8 @@ class Product extends Model
         "img_cover",
         "last_price",
         "current_price",
-        "category_id"
+        "category_id",
+        "slug"
     ];
 
     public function category()
@@ -36,8 +39,8 @@ class Product extends Model
         return $this->hasMany(Complince::class);
     }
 
-    public function getSlugOptions()
-    {
+    public function getSlugOptions():SlugOptions
+    { 
         return SlugOptions::create()
             ->generateSlugsFrom('name')
             ->saveSlugsTo('slug');
