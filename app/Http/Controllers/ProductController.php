@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\ProductPrices;
 use Illuminate\Support\Facades\Auth;
 use Barryvdh\Debugbar\Facades\Debugbar;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreProductRequest;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
@@ -115,17 +116,57 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $slug)
     {
         //
+        $categories = Category::all('name' , 'id');
+        $product = Product::where('slug' , $slug)->first();
+        // dd($product);
+        return view('product.edit' , compact('categories' , 'product'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StoreProductRequest $request, string $slug)
     {
         //
+        $data = $request->validated();
+        
+        if($request->file('img_cover'))
+        {
+            $data['img_cover'] = $request->file('img_cover')->store('products');
+
+            $img_cover_path = Product::where('slug' , $slug)->get('img_cover')->toArray();
+             
+            Storage::delete($img_cover_path[0]['img_cover']);
+        }
+
+        try
+        {
+            $product = Product::update($data);
+            ProductPrices::create([
+                
+                "price" => $product->current_price,
+                "product_id" => $product->id,
+            ]);
+            request()->session()->flash('alert', 'تم الاضافة بنجاح');
+
+        }
+        catch( \Throwable $e)
+        {   
+            // throw $e;
+            request()->session()->flash('alert', ' خطاء اثناء الاضافة حاول مرة اخري');
+
+        }
+        finally
+        {
+
+            return redirect()->route('product.create');
+     
+        }
+
+
     }
 
     /**
