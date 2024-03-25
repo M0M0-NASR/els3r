@@ -22,15 +22,14 @@ class ProductController extends Controller
      */
     public function index()
     {
-        if(Auth::check())
-        {
+        if (Auth::check()) {
             $products = Product::
-            get(['id', 'slug', 'name', 'img_cover' ,  'description', 'last_price', 'current_price', 'updated_at', 'category_id' ]);
+            get(['id', 'slug', 'name', 'img_cover', 'description', 'last_price', 'current_price', 'updated_at', 'category_id']);
             return view("product.index", compact("products"));
         }
         //
         $products = Product::
-            get(['id', 'slug', 'name', 'img_cover' ,  'description', 'last_price', 'current_price', 'updated_at', 'category_id'])
+            get(['id', 'slug', 'name', 'img_cover', 'description', 'last_price', 'current_price', 'updated_at', 'category_id'])
             ->groupBy('category_id');
 
 
@@ -47,8 +46,8 @@ class ProductController extends Controller
     public function create()
     {
         //
-        $categories = Category::all('name' , 'id');
-        return view('product.create' ,compact( 'categories'));
+        $categories = Category::all('name', 'id');
+        return view('product.create', compact('categories'));
     }
 
     /**
@@ -58,14 +57,12 @@ class ProductController extends Controller
     {
         //
         $data = $request->validated();
-        
-        if($request->file('img_cover'))
-        {
+
+        if ($request->file('img_cover')) {
             $data['img_cover'] = $request->file('img_cover')->store('products');
         }
-        
-        try
-        {
+
+        try {
             $product = Product::create($data);
             ProductPrices::create([
                 "price" => $product->current_price,
@@ -73,21 +70,17 @@ class ProductController extends Controller
             ]);
             request()->session()->flash('alert', 'تم الاضافة بنجاح');
 
-        }
-        catch( \Throwable $e)
-        {   
+        } catch (\Throwable $e) {
             // throw $e;
             request()->session()->flash('alert', ' خطاء اثناء الاضافة حاول مرة اخري');
 
-        }
-        finally
-        {
+        } finally {
 
             return redirect()->route('product.create');
-     
+
         }
-        
-        
+
+
 
 
     }
@@ -98,18 +91,18 @@ class ProductController extends Controller
     public function show(string $slug)
     {
         //
-        
+
         $dataChart = Product::where('slug', $slug)->first()->ProductPrices()->pluck('price', 'updated_at');
         $product = Product::where('slug', $slug)->first();
-        
+
         // Assuming you have a model named Compliance for the table
         $complianceCounts = Product::where('slug', $slug)->first()->
             complinces()
             ->groupBy(\DB::raw('DATE(created_at)'))
             ->select(\DB::raw('DATE(created_at) as date'), \DB::raw('COUNT(*) as count'))
-            ->pluck('count' , 'date');
+            ->pluck('count', 'date');
 
-        return view('product.show', compact('dataChart', 'product' , 'complianceCounts'));
+        return view('product.show', compact('dataChart', 'product', 'complianceCounts'));
 
     }
 
@@ -119,10 +112,10 @@ class ProductController extends Controller
     public function edit(string $slug)
     {
         //
-        $categories = Category::all('name' , 'id');
-        $product = Product::where('slug' , $slug)->first();
+        $categories = Category::all('name', 'id');
+        $product = Product::where('slug', $slug)->first();
         // dd($product);
-        return view('product.edit' , compact('categories' , 'product'));
+        return view('product.edit', compact('categories', 'product'));
     }
 
     /**
@@ -132,21 +125,19 @@ class ProductController extends Controller
     {
         //
         $data = $request->validated();
-        
 
-        $productModel = Product::where('slug' , $slug)->first();
 
-        if($request->file('img_cover'))
-        {
+        $productModel = Product::where('slug', $slug)->first();
+
+        if ($request->file('img_cover')) {
             $data['img_cover'] = $request->file('img_cover')->store('products');
 
-            $img_cover_path = $productModel->img_cover ;
-             
+            $img_cover_path = $productModel->img_cover;
+
             Storage::delete($img_cover_path);
         }
 
-        try
-        {
+        try {
             $productModel->update($data);
             ProductPrices::create([
                 "price" => $productModel->current_price,
@@ -154,18 +145,14 @@ class ProductController extends Controller
             ]);
             request()->session()->flash('alert', 'تم الاضافة بنجاح');
 
-        }
-        catch( \Throwable $e)
-        {   
+        } catch (\Throwable $e) {
             // throw $e;
             request()->session()->flash('alert', ' خطاء اثناء التعديل حاول مرة اخري');
 
-        }
-        finally
-        {
+        } finally {
 
-            return redirect()->route('product.update' , $productModel->slug);
-     
+            return redirect()->route('product.update', $productModel->slug);
+
         }
 
 
@@ -177,16 +164,30 @@ class ProductController extends Controller
     public function destroy(string $slug)
     {
         //
-        $productModel = Product::where('slug' , $slug)->first();
+
+        try {
+            $productModel = Product::where('slug', $slug)->first();
 
 
-        $img_cover_path = $productModel->img_cover;
-        Storage::delete($img_cover_path);
+            $img_cover_path = $productModel->img_cover;
+            Storage::delete($img_cover_path);
 
-        $productModel->delete();
+            $productModel->delete();
+            request()->session()->flash('alert', 'تم الحذف بنجاح');
 
-        return redirect()->route('product.index');
-       
+        } catch (\Throwable $e) {
+            // throw $e;
+            request()->session()->flash('alert', ' خطاء اثناء الحذف حاول مرة اخري');
+
+        } finally {
+
+            return redirect()->route('product.index');
+
+        }
+
+
+
+
     }
 
 
