@@ -159,19 +159,21 @@ class ProductController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified resource from storage or Database.
      */
     public function destroy(string $slug)
     {
         //
 
         try {
-            $productModel = Product::where('slug', $slug)->first();
+            // get Product With img_cover column
+            $productModel = Product::where('slug', $slug)->first('img_cover');
 
-
+            // delete Cover_img from  Storage 
             $img_cover_path = $productModel->img_cover;
             Storage::delete($img_cover_path);
 
+            // delete Product Model form Database
             $productModel->delete();
             request()->session()->flash('alert', 'تم الحذف بنجاح');
 
@@ -181,12 +183,10 @@ class ProductController extends Controller
 
         } finally {
 
+            // Redirect after try-catch 
             return redirect()->route('product.index');
 
         }
-
-
-
 
     }
 
