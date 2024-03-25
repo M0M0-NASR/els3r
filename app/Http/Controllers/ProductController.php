@@ -22,7 +22,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        if(Auth::authenticate())
+        if(Auth::check())
         {
             $products = Product::
             get(['id', 'slug', 'name', 'img_cover' ,  'description', 'last_price', 'current_price', 'updated_at', 'category_id' ]);
@@ -133,22 +133,24 @@ class ProductController extends Controller
         //
         $data = $request->validated();
         
+
+        $productModel = Product::where('slug' , $slug)->first();
+
         if($request->file('img_cover'))
         {
             $data['img_cover'] = $request->file('img_cover')->store('products');
 
-            $img_cover_path = Product::where('slug' , $slug)->get('img_cover')->toArray();
+            $img_cover_path = $productModel->img_cover ;
              
-            Storage::delete($img_cover_path[0]['img_cover']);
+            Storage::delete($img_cover_path);
         }
 
         try
         {
-            $product = Product::update($data);
+            $productModel->update($data);
             ProductPrices::create([
-                
-                "price" => $product->current_price,
-                "product_id" => $product->id,
+                "price" => $productModel->current_price,
+                "product_id" => $productModel->id,
             ]);
             request()->session()->flash('alert', 'تم الاضافة بنجاح');
 
@@ -162,7 +164,7 @@ class ProductController extends Controller
         finally
         {
 
-            return redirect()->route('product.create');
+            return redirect()->route('product.update' , $productModel->slug);
      
         }
 
@@ -172,9 +174,16 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $slug)
     {
         //
+
+        $productModel =  Product::where('slug' , $slug)->delete();
+
+        dd($productModel);
+        // $img_cover_path = $productModel->img_cover ;
+             
+        // Storage::delete($img_cover_path);
     }
 
 

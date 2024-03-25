@@ -11,7 +11,7 @@ active-link
     <div class="col-12 py-4 border">
         <div class="row">
             <div class="col-lg-3 col-md-3 img-card d-flex justify-content-center">
-                <img class="img-fluid rounded-3" src="{{$product->img_cover}}" alt="" srcset="">
+                <img class="img-fluid rounded-3" src="{{Storage::url($product->img_cover)}}" alt="" srcset="">
             </div>
             <div class="col-lg-6 col-md-8 info fs-4 d-flex me-3 d-flex justify-content-center">
                 <div class="labels fs-5 d-flex flex-column me-2 mt-2">

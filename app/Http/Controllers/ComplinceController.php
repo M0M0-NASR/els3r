@@ -60,7 +60,6 @@ class ComplinceController extends Controller
             }
         }
 
-        // dd($test);
         request()->session()->flash('alert', 'تم تسجيل الشكاوي بنجاح ,سوف يتم التحقق منها ف اقرب وقت');
 
         return redirect()->route('complince.print')->with('complince', $complinceModel);
