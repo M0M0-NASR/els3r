@@ -158,7 +158,7 @@ class ProductController extends Controller
         catch( \Throwable $e)
         {   
             // throw $e;
-            request()->session()->flash('alert', ' خطاء اثناء الاضافة حاول مرة اخري');
+            request()->session()->flash('alert', ' خطاء اثناء التعديل حاول مرة اخري');
 
         }
         finally
@@ -177,13 +177,16 @@ class ProductController extends Controller
     public function destroy(string $slug)
     {
         //
+        $productModel = Product::where('slug' , $slug)->first();
 
-        $productModel =  Product::where('slug' , $slug)->delete();
 
-        dd($productModel);
-        // $img_cover_path = $productModel->img_cover ;
-             
-        // Storage::delete($img_cover_path);
+        $img_cover_path = $productModel->img_cover;
+        Storage::delete($img_cover_path);
+
+        $productModel->delete();
+
+        return redirect()->route('product.index');
+       
     }
 
 
