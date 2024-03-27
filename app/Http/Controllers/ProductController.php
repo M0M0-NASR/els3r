@@ -5,48 +5,42 @@ namespace App\Http\Controllers;
 use Exception;
 use App\Models\Product;
 use App\Models\Category;
-use Illuminate\Http\Request;
 use App\Models\ProductPrices;
 use Illuminate\Support\Facades\Auth;
-use Barryvdh\Debugbar\Facades\Debugbar;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreProductRequest;
-use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
 class ProductController extends Controller
 {
 
-
     /**
-     * Display a listing of the resource.
+     * Display a listing of the resource For Admin and User.
      */
     public function index()
     {
+        // Return Products for Admin View
         if (Auth::check()) {
             $products = Product::
             get(['id', 'slug', 'name', 'img_cover', 'description', 'last_price', 'current_price', 'updated_at', 'category_id']);
+            
             return view("product.index", compact("products"));
         }
-        //
+        // Return Products for User View
         $products = Product::
             get(['id', 'slug', 'name', 'img_cover', 'description', 'last_price', 'current_price', 'updated_at', 'category_id'])
             ->groupBy('category_id');
 
-
-        // dd($products);
-// 
         return view("product.index", compact("products"));
     }
 
-
-
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new Product.
      */
     public function create()
     {
-        //
+        // get All available Categories from database
         $categories = Category::all('name', 'id');
+        
         return view('product.create', compact('categories'));
     }
 
@@ -55,19 +49,23 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        //
+        // Validate Inputs 
         $data = $request->validated();
 
+        //  Validate and Store img
         if ($request->file('img_cover')) {
             $data['img_cover'] = $request->file('img_cover')->store('products');
         }
 
+        // Save Product Model in Database
         try {
             $product = Product::create($data);
+            //  Save Product Prices in Database
             ProductPrices::create([
                 "price" => $product->current_price,
                 "product_id" => $product->id,
             ]);
+            
             request()->session()->flash('alert', 'تم الاضافة بنجاح');
 
         } catch (\Throwable $e) {
@@ -79,10 +77,6 @@ class ProductController extends Controller
             return redirect()->route('product.create');
 
         }
-
-
-
-
     }
 
     /**
@@ -91,8 +85,8 @@ class ProductController extends Controller
     public function show(string $slug)
     {
         //
-
         $dataChart = Product::where('slug', $slug)->first()->ProductPrices()->pluck('price', 'updated_at');
+        
         $product = Product::where('slug', $slug)->first();
 
         // Assuming you have a model named Compliance for the table
@@ -164,7 +158,6 @@ class ProductController extends Controller
     public function destroy(string $slug)
     {
         //
-
         try {
             // get Product With img_cover column
             $productModel = Product::where('slug', $slug)->first('img_cover');
@@ -174,12 +167,13 @@ class ProductController extends Controller
             Storage::delete($img_cover_path);
 
             // delete Product Model form Database
-            $productModel->delete();
+            Product::where('slug' , $slug)->delete();
+            
             request()->session()->flash('alert', 'تم الحذف بنجاح');
 
         } catch (\Throwable $e) {
             // throw $e;
-            request()->session()->flash('alert', ' خطاء اثناء الحذف حاول مرة اخري');
+            request()->session()->flash('alert', 'خطاء اثناء الحذف حاول مرة اخري');
 
         } finally {
 
@@ -189,6 +183,5 @@ class ProductController extends Controller
         }
 
     }
-
 
 }
