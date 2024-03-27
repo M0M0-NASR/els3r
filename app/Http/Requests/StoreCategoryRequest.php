@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreProductRequest extends FormRequest
+class StoreCategoryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,22 +23,16 @@ class StoreProductRequest extends FormRequest
     {
         return [
             //
-            "name" => "required|regex:/^[\p{Arabic}]{4,25}$/u",
-            "description" => "required",
-            "category_id" => "required|exists:categories,id",
-            "img_cover" => "required|image",
-            "current_price" => "required|numeric",
-            
+            'name' => "required|regex:/^[\p{Arabic}]{4,25}$/u",
+            'img_cover' =>"required|image"
         ];
     }
+
     public function messages(): array
     {
         return [
-
             "required" => "ادخل :attribute هنا",
-            "name.regex" => "اكتب اسم المنتج بشكل صحيح",
-            "current_price" => "ادخل السعر بشكل صحيح",
-            "category.exists" => "اختر القسم بشكل صحيح",
+            "name.regex" => "اكتب اسم القسم بشكل صحيح",
             "img_cover.image" => "اختر صورة بشكل صحيح",
         ];
     }
@@ -47,11 +41,9 @@ class StoreProductRequest extends FormRequest
     {
         return [
 
-            "name" => "اسم المنتج",
-            "description" => "الوصف",
-            "category_id" => "القسم",
-            "img_cover" => "صورة للمنتج",
-            "current_price" => "سعر المنتج",
+            "name" => "اسم القسم",
+            "img_cover" => "صورة القسم",
         ];
     }
+
 }
