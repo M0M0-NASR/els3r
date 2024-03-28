@@ -18,7 +18,6 @@
 </div>
 @endif
 
-
 <form method="POST" enctype="multipart/form-data" action="{{route('category.store')}}" class="row g-3  border rounded p-2 my-2">
   @csrf
   @method('post')  
